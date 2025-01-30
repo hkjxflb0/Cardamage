@@ -91,6 +91,27 @@ async def upload_video(
             status_code=500,
             detail=f"An error occurred while uploading the video: {str(e)}"
         )
+    
+
+# @app.get("/videos/{driver_id}")
+# async def get_driver_videos(driver_id: str, db: Session = Depends(get_db)):
+#     """Get all videos for a specific driver"""
+#     videos = db.query(Content).filter(Content.raider_id == driver_id).all()
+    
+#     if not videos:
+#         raise HTTPException(status_code=404, detail="No videos found for this driver")
+    
+#     base_url = "your_ngrok_url"  # This will need to be updated with the actual ngrok URL
+#     video_list = [{
+#         "video_type": video.flag,
+#         "public_url": f"{base_url}{video.video_url}",
+#         "uploaded_at": video.created_at,
+#         "id": video.id
+#     } for video in videos]
+    
+#     return {"driver_id": driver_id, "videos": video_list}
+
+
 
 
 ngrok.set_auth_token("2sL0plCt2Nt0XbX5xGcPwPpX2EQ_6NhM4CevXbvjA5BDugjNB")
@@ -101,13 +122,3 @@ print(f"Public URL: {public_url}")
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)  
 
-# @app.get("/check-video/{driver_id}")
-# async def check_video(driver_id: str):
-#     # Check common video extensions
-#     video_extensions = ['.mp4', '.avi', '.mov', '.mkv']
-#     for ext in video_extensions:
-#         file_path = os.path.join(UPLOAD_DIR, f"{driver_id}{ext}")
-#         if os.path.exists(file_path):
-#             return {"exists": True, "file_path": file_path}
-    
-#     return {"exists": False}
