@@ -6,6 +6,8 @@ from enum import Enum
 from sqlalchemy.orm import Session
 from cardamagedetection.components.database import get_db
 from cardamagedetection.components.model import Content
+import uvicorn
+from pyngrok import ngrok
 
 app = FastAPI()
 
@@ -90,6 +92,14 @@ async def upload_video(
             detail=f"An error occurred while uploading the video: {str(e)}"
         )
 
+
+ngrok.set_auth_token("2sL0plCt2Nt0XbX5xGcPwPpX2EQ_6NhM4CevXbvjA5BDugjNB")
+
+public_url = ngrok.connect(8000)
+print(f"Public URL: {public_url}")
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8000)  
 
 # @app.get("/check-video/{driver_id}")
 # async def check_video(driver_id: str):
