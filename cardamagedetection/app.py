@@ -90,7 +90,7 @@ async def upload_video(
             detail=f"An error occurred while uploading the video: {str(e)}"
         )
 
-# # Optional: Endpoint to check if a driver's video exists
+
 # @app.get("/check-video/{driver_id}")
 # async def check_video(driver_id: str):
 #     # Check common video extensions
