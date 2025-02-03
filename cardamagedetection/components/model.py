@@ -1,6 +1,6 @@
 from sqlalchemy.ext.declarative import declarative_base
 
-from cardamagedetection.components.database import get_db
+from components.database import get_db
 from sqlalchemy import Column, Integer, String, DateTime
 from sqlalchemy.sql import func
 

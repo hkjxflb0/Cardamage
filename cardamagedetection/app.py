@@ -4,8 +4,8 @@ import os
 import shutil
 from enum import Enum
 from sqlalchemy.orm import Session
-from cardamagedetection.components.database import get_db
-from cardamagedetection.components.model import Content
+from components.database import get_db
+from components.model import Content
 import uvicorn
 from pyngrok import ngrok
 
